@@ -9,18 +9,9 @@ client.on('ready', () => {
 });
 
 
-// Imports the Google Cloud client library
-const {Translate} = require('@google-cloud/translate');
 
-// Creates a client
-const translate = new Translate();
 
-/**
-* TODO(developer): Uncomment the following lines before running the sample.
-*/
-const text = 'Hello, world!';
-const target = 'ru';
-
+const translate = require('google-translate-api');
 
 var joke;
 var advice;
@@ -29,6 +20,7 @@ var giph;
 var count = 0;
 var sound;
 var weather;
+var textTrans;
 
 
 
@@ -55,7 +47,8 @@ client.on('message', msg => {
     msg.reply(advice);
   }
 
-  if (msg.content === 'send me a cool giph') {
+  if (msg.content === 'send me a cool gif') {
+
   wordForGiph =  msg.content;
   request.get('http://api.giphy.com/v1/gifs/random?api_key=pEhL6xZ3hiR75WEX2pv6GlvR5UCRktRf&tag=science',function(err,res,body){
   giph =  JSON.parse(body).data.url;
@@ -76,20 +69,17 @@ client.on('message', msg => {
 });
 }
 
-if(ms.content === "translate"){
+if(msg.content == "translate"){
+
+    translate('Ik spreek Engels', {to: 'en'}).then(res => {
+      textTrans = res.text;
+        //=> I speak English
+        msg.reply(textTrans);
+      //  console.log(res.from.language.iso);
+      });
 
 
-// Translates the text into the target language. "text" can be a string for
-// translating a single piece of text, or an array of strings for translating
-// multiple texts.
-let [translations] = await translate.translate(text, target);
-translations = Array.isArray(translations) ? translations : [translations];
-console.log('Translations:');
-translations.forEach((translation, i) => {
-  console.log(`${text[i]} => (${target}) ${translation}`);
-});
 }
-
 
 
 
