@@ -11,6 +11,8 @@
   "dependencies": {
     "discord.js": "^11.4.2",
     "dotenv": "^6.2.0",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "request": "^2.88.0",
+    "text-to-speech-js": "^1.1.9"
   }
 }
