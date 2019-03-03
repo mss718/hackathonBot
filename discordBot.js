@@ -2,6 +2,8 @@ require("dotenv").config();
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var request=require('request');
+//var googleTranslate = require('google-translate')('AIzaSyBo1L9ir-uEz97y2aFbanqmc0Sb2owlDGI');
+
 
 
 client.on('ready', () => {
@@ -11,7 +13,6 @@ client.on('ready', () => {
 
 
 
-const translate = require('google-translate-api');
 
 var joke;
 var advice;
@@ -21,6 +22,11 @@ var count = 0;
 var sound;
 var weather;
 var textTrans;
+var content;
+var word;
+
+
+var Sentencer = require('sentencer');
 
 
 
@@ -58,29 +64,29 @@ client.on('message', msg => {
 });
 }
 
+if (msg.content.startsWith("speak")) {
+    word = msg.content.substring(6,msg.content.length);
+    content = Sentencer.make("This sentence has " + word+  " and {{ an_adjective }} {{ noun }} in it.");
+    msg.reply(content, {tts: true})
 
-  if (msg.content === 'weather') {
-
-  request.get('api.openweathermap.org/data/2.5/weather?q=London',function(err,res,body){
-    giph =  JSON.parse(body).data.url;
-  msg.reply(weather);
-
-
-});
-}
-
-if(msg.content == "translate"){
-
-    translate('Ik spreek Engels', {to: 'en'}).then(res => {
-     textTrans = res.text;
-    // console.log(res.text);
-        //=> I speak English
-        // msg.reply(textTrans);
-       console.log(res.from.language.iso);
-      });
+  }
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

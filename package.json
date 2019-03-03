@@ -12,8 +12,12 @@
     "discord.js": "^11.4.2",
     "dotenv": "^6.2.0",
     "google-translate-api": "^2.3.0",
+    "node-spotify-api": "^1.0.7",
     "nodemon": "^1.18.10",
     "request": "^2.88.0",
-    "text-to-speech-js": "^1.1.9"
+    "sentencer": "^0.1.5",
+    "text-to-speech-js": "^1.1.9",
+    "translate": "^1.0.4",
+    "translate-api": "^0.3.18"
   }
 }
