@@ -72,10 +72,11 @@ client.on('message', msg => {
 if(msg.content == "translate"){
 
     translate('Ik spreek Engels', {to: 'en'}).then(res => {
-      textTrans = res.text;
+     textTrans = res.text;
+    // console.log(res.text);
         //=> I speak English
-        msg.reply(textTrans);
-      //  console.log(res.from.language.iso);
+        // msg.reply(textTrans);
+       console.log(res.from.language.iso);
       });
 
 
